@@ -24,7 +24,7 @@ const education = [
       "Market Analysis",
       "Strategic Planning",
     ],
-    image: "/placeholder.svg?height=60&width=60&text=CNU",
+    image: "/icons/cnu.svg",
   },
   {
     id: "edu-2",
@@ -41,7 +41,7 @@ const education = [
       "Web Development (HTML, CSS, JavaScript, Vue.js)",
       "Git (Version Control)",
     ],
-    image: "/placeholder.svg?height=60&width=60&text=SSAFY",
+    image: "/icons/ssafy.svg",
   },
 ];
 
@@ -75,13 +75,13 @@ export function EducationSection() {
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row md:items-start gap-4">
                   <div className="flex-shrink-0">
-                    <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-muted flex items-center justify-center">
+                    <div className="relative w-16 h-16 overflow-hidden flex items-center justify-center">
                       <Image
                         src={educationImages[edu.id] || edu.image}
                         alt={edu.school}
                         width={64}
                         height={64}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-fit"
                       />
                       {isAdmin && (
                         <label className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center cursor-pointer hover:bg-primary/90 transition-colors">

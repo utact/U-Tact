@@ -9,7 +9,7 @@ import { useAdmin } from "../contexts/admin-context";
 
 export function ProfileSection() {
   const [profileImage, setProfileImage] = useState<string>(
-    "/placeholder.svg?height=200&width=200"
+    "/images/profile.jpg"
   );
   const { isAdmin } = useAdmin();
 
