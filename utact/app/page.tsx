@@ -109,7 +109,7 @@ export default function Portfolio() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between px-8">
+        <div className="flex h-16 items-center justify-between px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20 max-w-7xl mx-auto w-full">
           <div className="font-bold text-xl">UTACT</div>
           <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
             <a href="#about" className="transition-colors hover:text-primary">
