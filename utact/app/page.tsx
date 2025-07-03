@@ -65,7 +65,7 @@ export default function Portfolio() {
         "A chrome extension to save your reading position and visualize memory retention through title color changes",
       tech: ["TypeScript", "Chrome Extension API"],
       link: "https://github.com/utact/where-was-i",
-      icon: "/icon/where-was-i.png",
+      icon: "/images/where-was-i.png",
     },
     {
       id: "project-2",
@@ -74,7 +74,7 @@ export default function Portfolio() {
         "A chaotic storytelling playground where everyone builds a story, one sentence at a time",
       tech: ["Java", "Spring Boot"],
       link: "https://github.com/utact/readwe-backend",
-      icon: "/placeholder.svg?height=40&width=40&text=READWE",
+      icon: "/images/readwe.png",
     },
     {
       id: "project-3",
@@ -83,7 +83,7 @@ export default function Portfolio() {
         "A portfolio website showcasing my skills and projects, built with Next.js and TypeScript",
       tech: ["TypeScript", "Next.js"],
       link: "https://github.com/utact/U-Tact",
-      icon: "/placeholder.svg?height=40&width=40&text=U-TACT",
+      icon: "/images/u-tact.png",
     },
   ];
 
@@ -109,7 +109,7 @@ export default function Portfolio() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between px-8">
+        <div className="flex h-16 items-center justify-between px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20 max-w-7xl mx-auto w-full">
           <div className="font-bold text-xl">UTACT</div>
           <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
             <a href="#about" className="transition-colors hover:text-primary">
@@ -221,13 +221,13 @@ export default function Portfolio() {
                   <div className="p-6 pb-4">
                     <div className="flex justify-between items-start mb-4">
                       <div className="flex items-center gap-3 flex-1">
-                        <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center flex-shrink-0 border border-primary/10">
+                        <div className="relative w-12 h-12 rounded-xl overflow-hidden flex items-center justify-center flex-shrink-0">
                           <Image
                             src={projectIcons[project.id] || project.icon}
                             alt={project.title}
                             width={48}
                             height={48}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain"
                           />
                           {isAdmin && (
                             <label className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center cursor-pointer hover:bg-primary/90 transition-colors">

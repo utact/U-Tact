@@ -21,7 +21,7 @@ const achievements = [
     role: "팀장",
     description:
       "개인형 이동장치 교통사고 취약 지역 선정 및 효율적 예산 배분 제안",
-    image: "/placeholder.svg?height=100&width=100&text=FIS",
+    image: "/icons/fis.svg",
     isExcellence: true,
   },
   // Certifications
@@ -134,7 +134,7 @@ export function AchievementsSection() {
                   <CardContent className="p-6">
                     <div className="flex items-start gap-6">
                       <div className="flex-shrink-0">
-                        <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-muted flex items-center justify-center">
+                        <div className="relative w-16 h-16 overflow-hidden flex items-center justify-center">
                           <Image
                             src={
                               achievementImages[award.id] ||
@@ -144,7 +144,7 @@ export function AchievementsSection() {
                             alt={award.title}
                             width={64}
                             height={64}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-fit"
                           />
                           {isAdmin && (
                             <label className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center cursor-pointer hover:bg-primary/90 transition-colors">
