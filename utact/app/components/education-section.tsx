@@ -105,7 +105,11 @@ export function EducationSection() {
                         {edu.degree}
                       </h3>
                       {edu.status === "In Progress" && (
-                        <Badge variant="default" className="text-xs">
+                        <Badge
+                          variant="default"
+                          className="text-xs flex-nowrap shrink-0"
+                        >
+                          {" "}
                           <Clock className="w-3 h-3 mr-1" />
                           진행 중
                         </Badge>
