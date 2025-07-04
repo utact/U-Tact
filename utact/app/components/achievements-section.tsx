@@ -132,8 +132,12 @@ export function AchievementsSection() {
                   }`}
                 >
                   <CardContent className="p-6">
-                    <div className="flex items-start gap-6">
-                      <div className="flex-shrink-0">
+                    <div className="flex items-start gap-6 flex-col sm:flex-row">
+                      {" "}
+                      {/* Added flex-col sm:flex-row */}
+                      <div className="flex-shrink-0 mx-auto sm:mx-0">
+                        {" "}
+                        {/* Added mx-auto sm:mx-0 */}
                         <div className="relative w-16 h-16 overflow-hidden flex items-center justify-center">
                           <Image
                             src={
@@ -162,9 +166,15 @@ export function AchievementsSection() {
                           )}
                         </div>
                       </div>
-                      <div className="flex-1">
-                        <div className="flex items-start justify-between mb-3">
-                          <div>
+                      <div className="flex-1 text-center sm:text-left">
+                        {" "}
+                        {/* Added text-center sm:text-left */}
+                        <div className="flex items-start justify-between mb-3 flex-col sm:flex-row">
+                          {" "}
+                          {/* Added flex-col sm:flex-row */}
+                          <div className="w-full sm:w-auto">
+                            {" "}
+                            {/* Added w-full sm:w-auto */}
                             <h4 className="text-xl font-semibold mb-1">
                               {award.title}
                             </h4>
@@ -175,7 +185,9 @@ export function AchievementsSection() {
                               {award.organization}
                             </p>
                           </div>
-                          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                          <div className="flex items-center justify-center sm:justify-start gap-4 text-sm text-muted-foreground mt-2 sm:mt-0 w-full sm:w-auto">
+                            {" "}
+                            {/* Added justify-center sm:justify-start and w-full sm:w-auto */}
                             <div className="flex items-center gap-1">
                               <Trophy className="w-4 h-4 text-amber-500" />
                               <span>{award.year}</span>
@@ -190,12 +202,16 @@ export function AchievementsSection() {
                             )}
                           </div>
                         </div>
-                        <div className="mb-2">
+                        <div className="mb-2 text-center sm:text-left">
+                          {" "}
+                          {/* Added text-center sm:text-left */}
                           <span className="text-sm text-muted-foreground">
                             프로젝트 기간: {award.period}
                           </span>
                         </div>
-                        <p className="text-muted-foreground">
+                        <p className="text-muted-foreground text-sm sm:text-base max-w-prose mx-auto sm:mx-0">
+                          {" "}
+                          {/* Added text-sm sm:text-base, max-w-prose, mx-auto sm:mx-0 */}
                           {award.description}
                         </p>
                       </div>
