@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/theme-provider";
 import { AdminProvider } from "./contexts/admin-context";
+import ClickSpark from "@/components/animations/click-spark";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,7 +42,19 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AdminProvider>{children}</AdminProvider>
+          <AdminProvider>
+            <ClickSpark
+              sparkColor="#ffffff"
+              sparkSize={10}
+              sparkRadius={15}
+              sparkCount={8}
+              duration={400}
+              easing="ease-in-out"
+              extraScale={1.1}
+            >
+              {children}
+            </ClickSpark>
+          </AdminProvider>
         </ThemeProvider>
       </body>
     </html>
