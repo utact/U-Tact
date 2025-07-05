@@ -11,7 +11,7 @@ import { StarRating } from "./star-rating";
 import type { Message } from "../types/message";
 
 interface MessageFormProps {
-  onAddMessage: (message: Omit<Message, "id" | "timestamp">) => void;
+  onAddMessage: (message: Omit<Message, "id" | "sendTime">) => void;
 }
 
 export function MessageForm({ onAddMessage }: MessageFormProps) {
@@ -24,7 +24,7 @@ export function MessageForm({ onAddMessage }: MessageFormProps) {
     if (newMessage.trim()) {
       onAddMessage({
         content: newMessage.trim(),
-        author: senderName.trim() || "익명의 방문자",
+        sender: senderName.trim() || "익명의 방문자",
         rating: rating,
       });
       setNewMessage("");

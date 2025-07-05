@@ -1,7 +1,7 @@
 export interface Message {
   id: string;
   content: string;
-  timestamp: Date;
-  author: string;
+  sender: string;
   rating: number;
+  sendTime: Date;
 }
