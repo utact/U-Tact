@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 interface MessageBoardProps {
   messages: Message[];
-  onAddMessage: (message: Omit<Message, "id" | "timestamp">) => void;
+  onAddMessage: (message: Omit<Message, "id" | "sendTime">) => void;
 }
 
 export function MessageBoard({ messages, onAddMessage }: MessageBoardProps) {

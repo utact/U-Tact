@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -15,33 +16,10 @@ import { AchievementsSection } from "./components/achievements-section";
 import { useAdmin } from "./contexts/admin-context";
 import Image from "next/image";
 
-const initialMessages: Message[] = [
-  // Initial messages for the message board
-  {
-    id: "1",
-    content: "What a nice slogan!",
-    timestamp: new Date(Date.now() - 1000 * 60 * 30),
-    author: "Elon Musk",
-    rating: 5,
-  },
-  {
-    id: "2",
-    content: "I wanna hire you!",
-    timestamp: new Date(Date.now() - 1000 * 60 * 20),
-    author: "Sundar Pichai",
-    rating: 5,
-  },
-  {
-    id: "3",
-    content: "How can I contact you?",
-    timestamp: new Date(Date.now() - 1000 * 60 * 10),
-    author: "Lee Jae-yong",
-    rating: 5,
-  },
-];
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export default function Portfolio() {
-  const [messages, setMessages] = useState<Message[]>(initialMessages);
+  const [messages, setMessages] = useState<Message[]>([]);
   const { isAdmin } = useAdmin();
   const [projectIcons, setProjectIcons] = useState<{ [key: string]: string }>(
     {}
@@ -87,13 +65,61 @@ export default function Portfolio() {
     },
   ];
 
-  const handleAddMessage = (message: Omit<Message, "id" | "timestamp">) => {
-    const newMessage: Message = {
-      ...message,
-      id: Date.now().toString(),
-      timestamp: new Date(),
+  useEffect(() => {
+    const fetchMessages = async () => {
+      if (!API_BASE_URL) {
+        console.error("API_BASE_URL 환경 변수가 설정되지 않았습니다.");
+        return;
+      }
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/messages`);
+        if (!response.ok) {
+          throw new Error(
+            `메시지를 불러오지 못했습니다. 상태: ${response.status}`
+          );
+        }
+        const data: Message[] = await response.json();
+        const parsedMessages: Message[] = data.map((msg) => ({
+          ...msg,
+          id: String(msg.id),
+          sendTime: new Date(msg.sendTime),
+        }));
+        setMessages(parsedMessages);
+      } catch (error) {
+        console.error("메시지 로딩 중 오류 발생:", error);
+      }
     };
-    setMessages((prev) => [...prev, newMessage]);
+
+    fetchMessages();
+  }, []);
+
+  const handleAddMessage = async (
+    message: Omit<Message, "id" | "sendTime">
+  ) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/messages`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(message),
+      });
+
+      if (!response.ok) {
+        throw new Error(`메시지 전송 실패. 상태: ${response.status}`);
+      }
+
+      const addedMessageFromServer: Message = await response.json();
+      const fullyTypedAddedMessage: Message = {
+        ...addedMessageFromServer,
+        id: String(addedMessageFromServer.id),
+        sendTime: new Date(addedMessageFromServer.sendTime),
+      };
+
+      setMessages((prev) => [fullyTypedAddedMessage, ...prev]);
+    } catch (error) {
+      console.error("메시지 전송 중 오류 발생:", error);
+    }
   };
 
   const handleProjectIconUpload = (projectId: string, file: File) => {

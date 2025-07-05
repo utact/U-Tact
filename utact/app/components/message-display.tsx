@@ -45,13 +45,13 @@ export function MessageDisplay({ messages }: MessageDisplayProps) {
             <div className="flex items-start gap-3">
               <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                 <span className="text-xs font-medium text-primary">
-                  {message.author.charAt(0)}
+                  {message.sender.charAt(0)}
                 </span>
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
                   <span className="text-sm font-medium text-foreground">
-                    {message.author}
+                    {message.sender}
                   </span>
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
@@ -68,7 +68,7 @@ export function MessageDisplay({ messages }: MessageDisplayProps) {
                     ))}
                   </div>
                   <span className="text-xs text-muted-foreground">
-                    {formatTime(message.timestamp)}
+                    {formatTime(message.sendTime)}
                   </span>
                 </div>
                 <p className="text-sm text-muted-foreground line-clamp-2">
